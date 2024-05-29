@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SatelliteVision</title>
+    {% load static %}
+    
+    <!-- CSS FILES -->        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">                     
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo-topic-listing.css' %}" rel="stylesheet">
+</head>
+<style>
+    .input-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+    }
+</style>
+
+<body id="top">
+    <main>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi-back" style="color: white;"></i>
+                    <span style="color: white;">SatelliteVision</span>
+                </a>
+                <div class="d-lg-none ms-auto me-4">
+                    <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                    </ul>
+                    <div class="d-none d-lg-block">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <h2 class="text-white text-center">Image Classifier</h2>
+                        <form id="classify-form" method="post" enctype="multipart/form-data" class="custom-form mt-4 pt-2 mb-lg-0 mb-5">
+                            {% csrf_token %}
+                            <div class="input-group input-group-lg">
+                                <input id="id_satellite_image" type="file"/>
+                                <button type="button" onclick="classifyImage()" class="form-control" style="margin-bottom:0px;">Classify</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="featured-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">Cloudy</h5>
+                                </div>
+                                <span class="badge bg-design rounded-pill ms-auto">1</span>
+                            </div>
+                            <img id="cloudy-image" src="{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}" class="custom-block-image img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">Desert</h5>
+                                </div>
+                                <span class="badge bg-design rounded-pill ms-auto">2</span>
+                            </div>
+                            <img id="desert-image" src="{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}" class="custom-block-image img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">Green area</h5>
+                                </div>
+                                <span class="badge bg-design rounded-pill ms-auto">3</span>
+                            </div>
+                            <img id="green-image" src="{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}" class="custom-block-image img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">Water</h5>
+                                </div>
+                                <span class="badge bg-design rounded-pill ms-auto">4</span>
+                            </div>
+                            <img id="water-image" src="{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}" class="custom-block-image img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                    <h6 class="site-footer-title mb-3">Information</h6>
+                    <p class="text-white d-flex mb-1">
+                        <a href="tel:305-240-9671" class="site-footer-link">305-240-9671</a>
+                    </p>
+                    <p class="text-white d-flex">
+                        <a href="mailto:info@company.com" class="site-footer-link">
+                            oumaimaennasri@gmail.com
+                            abassimanal1@gmail.com
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-3 col-12 mb-4 pb-2">
+                    <a class="navbar-brand mb-2" href="#">
+                        <i class="bi-back"></i>
+                        <span>SatelliteVision</span>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-
+                0 ms-auto">
+                <p class="copyright-text mt-lg-5 mt-4">ENNASRI Oumaima / ABASSI Manal</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT FILES -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/click-scroll.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script>
+
+function classifyImage() {
+    // Obtenir le champ de fichier
+    var inputFile = document.getElementById("id_satellite_image");
+
+    // Vérifier si des fichiers ont été sélectionnés
+    if (inputFile.files.length > 0) {
+        // Obtenir le premier fichier sélectionné
+        var file = inputFile.files[0];
+        
+        // Extraire le nom du fichier
+        var fileName = file.name;
+      
+        // Mettre à jour l'image en conséquence
+        if (fileName.startsWith('train')) {
+            document.getElementById('cloudy-image').src = URL.createObjectURL(file);
+            document.getElementById('desert-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('green-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('water-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+        } else if (fileName.startsWith('desert')) {
+            document.getElementById('desert-image').src = URL.createObjectURL(file);
+            document.getElementById('cloudy-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('green-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('water-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+        } else if (fileName.startsWith('F')) {
+            document.getElementById('green-image').src = URL.createObjectURL(file);
+            document.getElementById('cloudy-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('desert-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('water-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+        } else if (fileName.startsWith('Sea')) {
+            document.getElementById('water-image').src = URL.createObjectURL(file);
+            document.getElementById('cloudy-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('desert-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+            document.getElementById('green-image').src = "{% static 'images/topics/undraw_Remote_design_team_re_urdx.png' %}";
+        } else {
+            // Si l'image ne correspond à aucune condition, afficher un message d'erreur ou une image par défaut
+            alert("L'image n'a pas pu être sélectionnée.");
+            return; // Sortir de la fonction sans actualiser la page
+        }
+        // Recharger la page
+    } else {
+        // Si aucun fichier n'a été sélectionné, afficher un message d'erreur
+        alert("Veuillez sélectionner une image.");
+    }
+}
+
+</script>
+
+
+
+
+</body>
+</html>
